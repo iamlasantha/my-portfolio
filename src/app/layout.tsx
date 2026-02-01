@@ -36,7 +36,11 @@ export const metadata: Metadata = {
     description: "Undergraduate Sttudent at NSBM Green University | Linux | Devops | Cloud Enthusiast",
     images: ["/og-image.png"],
   },
-
+  icons: {
+    icon: "/tab-logo.png",
+    shortcut: "/tab-logo.png",
+    apple: "/tab-logo.png",
+  },
 };
 
 export default function RootLayout({
