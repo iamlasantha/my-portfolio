@@ -12,13 +12,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Devfolio | Senior Full Stack Developer Portfolio",
-  description: "Portfolio of a Senior Full Stack Developer specializing in Next.js, React, and DevOps. View my projects, skills, and contact information.",
+  title: "Lasantha Wellalage",
   openGraph: {
-    title: "Devfolio | Senior Full Stack Developer Portfolio",
-    description: "Showcasing projects and skills in Full Stack Development and DevOps.",
-    url: "https://devfolio-nextjs.vercel.app", // Replace with actual URL if known, or keep generic relative
-    siteName: "Devfolio",
+    title: "Lasantha Wellalage",
+    description: "Undergraduate Sttudent at NSBM Green University | Linux | Devops | Cloud Enthusiast",
+    url: "https://lasanthawellalage.com", // Replace with actual URL if known, or keep generic relative
+    siteName: "Lasantha Wellalage",
     images: [
       {
         url: "/og-image.png", // Ensure this exists or use a placeholder
@@ -32,13 +31,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Devfolio | Senior Full Stack Developer Portfolio",
-    description: "Showcasing projects and skills in Full Stack Development and DevOps.",
+    title: "Lasantha Wellalage",
+    description: "Undergraduate Sttudent at NSBM Green University | Linux | Devops | Cloud Enthusiast",
     images: ["/og-image.png"],
   },
-  icons: {
-    icon: "/favicon.ico",
-  },
+
 };
 
 export default function RootLayout({
