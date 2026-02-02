@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Roboto } from "next/font/google"; // Import Roboto
 import "./globals.css";
 import { ThemeProvider } from "./context/ThemeContext";
 import Navbar from "./components/Navbar";
@@ -9,6 +9,12 @@ import ParticleNetwork from "./components/ParticleNetwork";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+});
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["100", "300", "400", "500", "700", "900"],
+  variable: "--font-roboto",
 });
 
 export const metadata: Metadata = {
@@ -50,7 +56,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`bg-dark text-white transition-colors ${inter.variable} antialiased`}>
+      <body className={`bg-dark text-white transition-colors ${inter.variable} ${roboto.variable} antialiased`}>
         <ThemeProvider>
           <ParticleNetwork />
           <Navbar />

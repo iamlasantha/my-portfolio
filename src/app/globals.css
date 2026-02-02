@@ -12,7 +12,7 @@
     --color-text: #ffffff;
     --color-bg: #0A0E27;
 
-    --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+    --font-sans: var(--font-roboto), var(--font-inter), system-ui, -apple-system, sans-serif;
 
     --animation-fade-in: fadeIn 0.5s ease-in-out;
     --animation-slide-up: slideUp 0.5s ease-in-out;
