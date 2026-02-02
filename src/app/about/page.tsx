@@ -9,7 +9,7 @@ import {
   cardHoverSmall
 } from '@/utils/animations'
 import { data } from '@/contents/about'
-import { FaGraduationCap, FaBriefcase, FaUniversity, FaCode, FaCertificate } from 'react-icons/fa'
+import { FaGraduationCap, FaBriefcase, FaUniversity, FaCode, FaCertificate, FaLinkedin } from 'react-icons/fa'
 import Skills from '@/app/components/Skills'
 
 export default function About() {
@@ -131,32 +131,43 @@ export default function About() {
 
       {/* Certifications Section */}
       {/* Certifications Section */}
+      {/* Stories & Achievements Section */}
       <motion.section
         className="mb-20"
         {...fadeIn}
         transition={{ delay: 0.3 }}
       >
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl font-bold mb-8 flex items-center justify-center gap-2">
-            <FaCertificate className="text-primary" /> Certifications
+            <FaLinkedin className="text-primary" /> Stories & Achievements
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {data.certifications.map((cert, index) => (
-              <motion.div
+            {data.stories.map((story, index) => (
+              <motion.a
                 key={index}
-                className="bg-white/5 p-6 rounded-xl shadow-sm border border-white/5 flex items-center gap-4 hover:border-primary/20 transition-all"
+                href={story.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white/5 p-6 rounded-xl shadow-sm border border-white/5 flex flex-col gap-4 hover:border-primary/20 transition-all group"
                 variants={fadeInUp}
                 {...cardHoverSmall}
               >
-                <div className="bg-yellow-500/20 p-3 rounded-full">
-                  <FaCertificate className="text-yellow-400 text-xl" />
+                <div className="flex items-start justify-between">
+                  <div className="bg-blue-600/20 p-3 rounded-full">
+                    <FaLinkedin className="text-blue-500 text-xl" />
+                  </div>
+                  <span className="text-xs text-gray-500 border border-white/10 px-2 py-1 rounded-full">{story.date}</span>
                 </div>
+
                 <div>
-                  <h3 className="font-bold text-white">{cert.title}</h3>
-                  <p className="text-primary text-sm">{cert.issuer}</p>
-                  <p className="text-gray-400 text-xs mt-1">{cert.date}</p>
+                  <h3 className="font-bold text-white text-lg group-hover:text-primary transition-colors">{story.title}</h3>
+                  <p className="text-gray-400 text-sm mt-2 line-clamp-2">{story.description}</p>
                 </div>
-              </motion.div>
+
+                <div className="mt-auto pt-4 border-t border-white/5 flex items-center text-sm text-primary font-medium">
+                  Read on LinkedIn <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+              </motion.a>
             ))}
           </div>
         </div>
