@@ -34,22 +34,9 @@ export default function About() {
                 className="mb-20 min-h-[80vh] flex flex-col justify-center"
                 {...fadeInUp}
             >
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-6xl mx-auto items-center">
-                    {/* Profile Image */}
-                    <div className="relative aspect-[3/4] w-full max-w-sm mx-auto md:max-w-none rounded-2xl overflow-hidden border border-white/10 shadow-2xl group ring-1 ring-white/5">
-                        <Image
-                            src="/about-profile.png"
-                            alt="Profile"
-                            fill
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                            priority
-                            sizes="(max-width: 768px) 100vw, 33vw"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-dark/60 via-transparent to-transparent opacity-60" />
-                    </div>
-
-                    {/* Bio Text */}
-                    <div className="md:col-span-2 bg-white/5 p-6 md:p-8 rounded-2xl border border-white/10 backdrop-blur-sm shadow-sm flex flex-col justify-center">
+                <div className="flex justify-center max-w-6xl mx-auto">
+                    {/* Bio Text - Centered & No Image */}
+                    <div className="w-full max-w-4xl bg-white/5 p-8 md:p-12 rounded-2xl border border-white/10 backdrop-blur-sm shadow-sm flex flex-col justify-center">
                         {bio.map((paragraph, index) => (
                             <p key={index} className="font-bilbo text-2xl md:text-3xl text-gray-300 mb-4 leading-relaxed text-justify last:mb-0 tracking-wide">
                                 {index === 0 && '"'}
@@ -61,83 +48,134 @@ export default function About() {
                 </div>
             </motion.section>
 
-            {/* Education & Experience Grid */}
+            {/* Education & Experience Timeline */}
             <motion.section
                 className="mb-20"
                 {...fadeIn}
                 transition={{ delay: 0.2 }}
             >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                    {/* Education */}
-                    <motion.div variants={fadeInUp}>
-                        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                            <FaGraduationCap className="text-primary" /> Education
+                <div className="max-w-4xl mx-auto space-y-20">
+
+                    {/* Education Timeline */}
+                    <div className="relative">
+                        <h2 className="text-3xl font-bold mb-12 flex items-center gap-3">
+                            <div className="p-3 rounded-lg bg-green-500/10">
+                                <FaGraduationCap className="text-primary text-2xl" />
+                            </div>
+                            Education
                         </h2>
-                        <div className="space-y-6">
+
+                        <div className="border-l-2 border-white/10 ml-3 md:ml-24 space-y-12 pb-4">
                             {data.education.map((edu, index) => (
                                 <motion.div
                                     key={index}
-                                    className="bg-white dark:bg-dark/50 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 h-full"
-                                    {...cardHoverSmall}
+                                    className="relative pl-8 md:pl-12"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: index * 0.1 }}
                                 >
-                                    <div className="flex items-start justify-between mb-4">
-                                        <div>
-                                            <h3 className="text-xl font-bold text-white">{edu.school}</h3>
-                                            <p className="text-primary font-medium">{edu.degree}</p>
-                                        </div>
-                                        <div className="bg-white p-2 rounded-lg h-12 w-12 flex items-center justify-center overflow-hidden">
-                                            {edu.logo ? (
-                                                <div className="relative w-full h-full">
+                                    {/* Timeline Dot */}
+                                    <div className="absolute top-2 -left-[9px] w-5 h-5 rounded-full border-4 border-dark bg-primary shadow-lg shadow-primary/50" />
+
+                                    {/* Date - Left Side Desktop */}
+                                    <div className="md:absolute md:-left-52 md:top-1 md:w-40 md:text-right mb-2 md:mb-0">
+                                        <span className="text-xl font-bold text-primary block">{edu.date}</span>
+                                        <span className="text-sm text-gray-400">{edu.location}</span>
+                                    </div>
+
+                                    {/* Content Card */}
+                                    <div className="bg-white/5 p-6 md:p-8 rounded-2xl border border-white/10 hover:border-primary/30 transition-all duration-300 group hover:shadow-lg hover:shadow-primary/5">
+                                        <div className="flex items-center justify-between mb-4">
+                                            <div>
+                                                <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-primary transition-colors">{edu.school}</h3>
+                                                <p className="text-gray-300 font-medium text-lg mt-1">{edu.degree}</p>
+                                            </div>
+                                            {edu.logo && (
+                                                <div className="hidden md:block w-16 h-16 bg-white rounded-lg p-2 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity">
                                                     <Image
                                                         src={edu.logo}
                                                         alt={edu.school}
-                                                        fill
-                                                        className="object-contain"
+                                                        width={64}
+                                                        height={64}
+                                                        className="object-contain w-full h-full"
                                                     />
                                                 </div>
-                                            ) : (
-                                                <FaUniversity className="text-green-400 text-xl" />
                                             )}
                                         </div>
+                                        <p className="text-gray-400 leading-relaxed">
+                                            {edu.description}
+                                        </p>
                                     </div>
-                                    <p className="text-gray-400 text-sm mb-4">{edu.location} • {edu.date}</p>
-                                    <p className="text-gray-300 text-sm">
-                                        {edu.description}
-                                    </p>
                                 </motion.div>
                             ))}
                         </div>
-                    </motion.div>
+                    </div>
 
-                    {/* Experience */}
-                    <motion.div variants={fadeInUp} transition={{ delay: 0.1 }}>
-                        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                            <FaBriefcase className="text-primary" /> Open to Work
+                    {/* Experience Timeline */}
+                    <div className="relative">
+                        <h2 className="text-3xl font-bold mb-12 flex items-center gap-3">
+                            <div className="p-3 rounded-lg bg-blue-500/10">
+                                <FaBriefcase className="text-blue-400 text-2xl" />
+                            </div>
+                            Experience
                         </h2>
-                        <div className="space-y-6">
+
+                        <div className="border-l-2 border-white/10 ml-3 md:ml-24 space-y-12 pb-4">
                             {data.experience.map((exp, index) => (
                                 <motion.div
                                     key={index}
-                                    className="bg-white dark:bg-dark/50 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 h-full"
-                                    {...cardHoverSmall}
+                                    className="relative pl-8 md:pl-12"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: index * 0.1 }}
                                 >
-                                    <div className="flex items-start justify-between mb-4">
-                                        <div>
-                                            <h3 className="text-xl font-bold text-white">{exp.title}</h3>
-                                            <p className="text-primary font-medium">{exp.company}</p>
-                                        </div>
-                                        <div className="bg-blue-500/20 p-2 rounded-lg">
-                                            <FaCode className="text-blue-400 text-xl" />
-                                        </div>
+                                    {/* Timeline Dot */}
+                                    <div className="absolute top-2 -left-[9px] w-5 h-5 rounded-full border-4 border-dark bg-blue-500 shadow-lg shadow-blue-500/50" />
+
+                                    {/* Date - Left Side Desktop */}
+                                    <div className="md:absolute md:-left-52 md:top-1 md:w-40 md:text-right mb-2 md:mb-0">
+                                        <span className="text-xl font-bold text-blue-400 block">{exp.date}</span>
+                                        <span className="text-sm text-gray-400">{exp.location}</span>
                                     </div>
-                                    <p className="text-gray-400 text-sm mb-4">{exp.location} • {exp.date}</p>
-                                    <p className="text-gray-300 text-sm">
-                                        {exp.description}
-                                    </p>
+
+                                    {/* Content Card */}
+                                    <div className="bg-white/5 p-6 md:p-8 rounded-2xl border border-white/10 hover:border-blue-500/30 transition-all duration-300 group hover:shadow-lg hover:shadow-blue-500/5">
+                                        <div className="flex items-center justify-between mb-4">
+                                            <div>
+                                                <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">{exp.title}</h3>
+                                                <p className="text-gray-300 font-medium text-lg mt-1">{exp.company}</p>
+                                            </div>
+                                            <div className="hidden md:flex bg-blue-500/20 p-3 rounded-lg items-center justify-center shrink-0">
+                                                <FaCode className="text-blue-400 text-2xl" />
+                                            </div>
+                                        </div>
+                                        <p className="text-gray-400 leading-relaxed">
+                                            {exp.description}
+                                        </p>
+
+                                        {/* Roles Badges */}
+                                        {/* @ts-ignore - roles is optional/new property */}
+                                        {exp.roles && (
+                                            <div className="mt-6 flex flex-wrap gap-3">
+                                                {/* @ts-ignore */}
+                                                {exp.roles.map((role, i) => (
+                                                    <span
+                                                        key={i}
+                                                        className="px-4 py-1.5 bg-blue-500/10 text-blue-400 rounded-lg text-sm font-medium border border-blue-500/20 hover:bg-blue-500/20 transition-colors"
+                                                    >
+                                                        {role}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
                                 </motion.div>
                             ))}
                         </div>
-                    </motion.div>
+                    </div>
+
                 </div>
             </motion.section>
 

@@ -7,16 +7,33 @@ export const data = {
             description: "Focusing on Information Systems, Software Engineering, and DevOps practices.",
             location: "Homagama",
             logo: "/images/nsbm-logo.png"
+        },
+        {
+            school: "Dr. Richard Pathirana College",
+            degree: "G.C.E Advanced Level",
+            date: "2018 - 2020",
+            description: "Completed G.C.E Advanced Level in the Technology stream.",
+            location: "Galle",
+            logo: "/images/richard-pathirana-logo.png"
+        },
+        {
+            school: "Sri Pada Central College",
+            degree: "G.C.E Ordinary Level",
+            date: "2007 - 2017",
+            description: "Completed G.C.E Ordinary Level.",
+            location: "Hatton",
+            logo: "/images/sri-pada-logo.png"
         }
     ],
     experience: [
         {
-            title: "Aspiring DevOps Engineer",
-            company: "Open to Opportunities",
+            title: "Open to Work",
+            company: "As an Intern",
             date: "Present",
-            description: "Actively building projects in Cloud Infrastructure, Automation, and CI/CD. Eager to contribute to innovative tech teams.",
+            description: "Seeking internship opportunities in:",
+            roles: ["DevOps Engineer", "TechOps Engineer", "Linux Administrator", "Cloud Engineer", "System Administrator"],
             current: true,
-            location: "Remote / Hybrid"
+            location: "Onsite / Remote / Hybrid"
         }
     ],
     stories: [

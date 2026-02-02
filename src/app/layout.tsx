@@ -5,6 +5,7 @@ import { ThemeProvider } from "./context/ThemeContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ParticleNetwork from "./components/ParticleNetwork";
+import ParallaxBackground from "./components/ParallaxBackground";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     siteName: "Lasantha Wellalage",
     images: [
       {
-        url: "/og-image.png",
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Lasantha Wellalage Portfolio",
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Lasantha Wellalage",
     description: "MIS Undergraduate Student at NSBM Green University. Enthusiast in Linux, DevOps, and Cloud Technologies.",
-    images: ["/og-image.png"],
+    images: ["/opengraph-image.png"],
   },
   icons: {
     icon: "/tab-logo.png",
@@ -64,6 +65,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`bg-dark text-white transition-colors ${inter.variable} ${roboto.variable} ${bilbo.variable} antialiased`}>
         <ThemeProvider>
+          <ParallaxBackground />
           <ParticleNetwork />
           <Navbar />
           <main className="min-h-screen pt-24">

@@ -43,24 +43,33 @@ export async function fetchProjects(): Promise<DisplayProject[]> {
         }
 
         const data = await res.json();
+        const hiddenRepos = ["devops_course_first_repo", "iamlasantha"];
+        const customImages: { [key: string]: string } = {
+            "my portfolio": "/opengraph-image.png",
+            "portfolio": "/opengraph-image.png",
+            "portfolio-project-2": "/opengraph-image.png",
+            "devfolio-nextjs-portfolio-website-main": "/opengraph-image.png"
+        };
 
-        // Filter out forks if desired, or keep them. For now, we map everything.
-        // We can also filter out specific repos by name if needed.
+        // Filter out forks and hidden repos
         const projects: DisplayProject[] = data
-            .filter((repo: any) => !repo.fork) // Optional: hide forks? Let's keep it simple first, maybe hide forks if they want mostly personal work.
-            .map((repo: any) => ({
-                title: repo.name.replace(/-/g, ' '),
-                description: repo.description || "No description provided.",
-                image: undefined, // Let the UI component handle the default image
-                link: repo.html_url,
-                demoLink: repo.homepage,
-                tags: [repo.language].filter(Boolean),
-                stats: {
-                    stars: repo.stargazers_count,
-                    forks: repo.forks_count,
-                },
-                isManual: false,
-            }));
+            .filter((repo: any) => !repo.fork && !hiddenRepos.includes(repo.name.toLowerCase()))
+            .map((repo: any) => {
+                const title = repo.name.replace(/-/g, ' ');
+                return {
+                    title: title,
+                    description: repo.description || "No description provided.",
+                    image: customImages[repo.name.toLowerCase()] || customImages[title.toLowerCase()] || undefined,
+                    link: repo.html_url,
+                    demoLink: repo.homepage,
+                    tags: [repo.language].filter(Boolean),
+                    stats: {
+                        stars: repo.stargazers_count,
+                        forks: repo.forks_count,
+                    },
+                    isManual: false,
+                };
+            });
 
         return projects;
     } catch (error) {
