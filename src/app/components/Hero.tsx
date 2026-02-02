@@ -59,6 +59,7 @@ export default function Hero() {
             transition={{ delay: 0.6 }}
           >
             <motion.a
+              href={personal.socials.github}
               target="_blank"
               rel="noopener noreferrer"
               className="text-4xl md:text-5xl text-gray-300 hover:text-primary transition-colors"
