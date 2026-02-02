@@ -125,6 +125,23 @@ export default function Contact() {
                             </div>
                         </motion.div>
                     </motion.div>
+
+                    {/* Google Map */}
+                    <motion.div
+                        className="w-full h-64 rounded-xl overflow-hidden border border-white/10 mt-8"
+                        variants={fadeInUp}
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                    >
+                        <iframe
+                            width="100%"
+                            height="100%"
+                            frameBorder="0"
+                            style={{ border: 0 }}
+                            src="https://maps.google.com/maps?q=6.838002,80.024400&t=h&z=15&ie=UTF8&iwloc=&output=embed"
+                            allowFullScreen
+                        ></iframe>
+                    </motion.div>
                 </motion.div>
 
                 {/* Contact Form */}

@@ -34,24 +34,27 @@ export default function About() {
                 className="mb-20 min-h-[80vh] flex flex-col justify-center"
                 {...fadeInUp}
             >
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-6xl mx-auto items-stretch">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-6xl mx-auto items-center">
                     {/* Profile Image */}
-                    <div className="relative aspect-square md:aspect-auto md:h-full w-full max-w-sm mx-auto md:max-w-none rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
+                    <div className="relative aspect-[3/4] w-full max-w-sm mx-auto md:max-w-none rounded-2xl overflow-hidden border border-white/10 shadow-2xl group ring-1 ring-white/5">
                         <Image
                             src="/about-profile.png"
                             alt="Profile"
                             fill
                             className="object-cover transition-transform duration-500 group-hover:scale-105"
                             priority
+                            sizes="(max-width: 768px) 100vw, 33vw"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-dark/60 via-transparent to-transparent opacity-60" />
                     </div>
 
                     {/* Bio Text */}
-                    <div className="md:col-span-2 bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-sm shadow-sm flex flex-col justify-center">
+                    <div className="md:col-span-2 bg-white/5 p-6 md:p-8 rounded-2xl border border-white/10 backdrop-blur-sm shadow-sm flex flex-col justify-center">
                         {bio.map((paragraph, index) => (
-                            <p key={index} className="text-lg text-gray-300 mb-4 leading-relaxed last:mb-0">
+                            <p key={index} className="font-bilbo text-2xl md:text-3xl text-gray-300 mb-4 leading-relaxed text-justify last:mb-0 tracking-wide">
+                                {index === 0 && '"'}
                                 {paragraph}
+                                {index === bio.length - 1 && '"'}
                             </p>
                         ))}
                     </div>

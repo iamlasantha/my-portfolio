@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Roboto } from "next/font/google"; // Import Roboto
+import { Inter, Roboto, Bilbo } from "next/font/google"; // Import Roboto and Bilbo
 import "./globals.css";
 import { ThemeProvider } from "./context/ThemeContext";
 import Navbar from "./components/Navbar";
@@ -17,20 +17,26 @@ const roboto = Roboto({
   variable: "--font-roboto",
 });
 
+const bilbo = Bilbo({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-bilbo",
+});
+
 export const metadata: Metadata = {
   title: "Lasantha Wellalage",
-  description: "Undergraduate Sttudent at NSBM Green University | Linux | Devops | Cloud Enthusiast",
+  description: "MIS Undergraduate Student at NSBM Green University. Enthusiast in Linux, DevOps, and Cloud Technologies.",
   openGraph: {
     title: "Lasantha Wellalage",
-    description: "Undergraduate Sttudent at NSBM Green University | Linux | Devops | Cloud Enthusiast",
-    url: "https://lasanthawellalage.com", // Replace with actual URL if known, or keep generic relative
+    description: "MIS Undergraduate Student at NSBM Green University. Enthusiast in Linux, DevOps, and Cloud Technologies.",
+    url: "https://lasanthawellalage.com",
     siteName: "Lasantha Wellalage",
     images: [
       {
-        url: "/og-image.png", // Ensure this exists or use a placeholder
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Devfolio Portfolio Preview",
+        alt: "Lasantha Wellalage Portfolio",
       },
     ],
     locale: "en_US",
@@ -39,7 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Lasantha Wellalage",
-    description: "Undergraduate Sttudent at NSBM Green University | Linux | Devops | Cloud Enthusiast",
+    description: "MIS Undergraduate Student at NSBM Green University. Enthusiast in Linux, DevOps, and Cloud Technologies.",
     images: ["/og-image.png"],
   },
   icons: {
@@ -56,7 +62,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`bg-dark text-white transition-colors ${inter.variable} ${roboto.variable} antialiased`}>
+      <body className={`bg-dark text-white transition-colors ${inter.variable} ${roboto.variable} ${bilbo.variable} antialiased`}>
         <ThemeProvider>
           <ParticleNetwork />
           <Navbar />

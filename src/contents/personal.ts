@@ -2,7 +2,7 @@ export const personal = {
   name: "Lasantha Wellalage",
   title: "Bsc in Management Information Systems(Special)",
   tagline: "NSBM Green University",
-  location: "Homagama, Sri Lanka",
+  location: "Maithreedasa Mawatha, Homagama",
   email: "social.iamlasantha@gmail.com",
   phone: "+94768872366",
   socials: {
